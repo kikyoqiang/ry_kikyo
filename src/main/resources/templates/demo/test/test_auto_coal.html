@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>自动化放顶煤配置</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link th:href="@{/js/plugins/bootstrap-3.4.1-dist/css/bootstrap.css}" rel="stylesheet"/>
+    <!--    <link th:href="@{/js/plugins/bootstrap-select-1.13.14/dist/css/bootstrap-select.css}" rel="stylesheet"/>-->
+    <!--    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">-->
+    <!--    <link th:href="@{/front/indexAbstract/css/indexCom.css}" rel="stylesheet" type="text/css">-->
+    <!--    <link th:href="@{/front/realtime/css/PickupRealtime.css}" rel="stylesheet" type="text/css">-->
+    <!--    <link th:href="@{/front/realtime/css/CoalControl.css}" rel="stylesheet" type="text/css">-->
+</head>
+<style type="text/css">
+
+</style>
+<body>
+<div class="container">
+    <!--    <div style="width: 50%;height: 50%;">-->
+    <div class="col-sm-12 select-table table-striped">
+        <table id="bootstrap-table"></table>
+    </div>
+    <!--    </div>-->
+</div>
+</body>
+<!--<th:block th:include="include :: footer"/>-->
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<!--bootstrap-table 表格插件-->
+<script th:src="@{/ajax/libs/bootstrap-table/bootstrap-table.min.js?v=20200727}"></script>
+<script th:src="@{/ajax/libs/bootstrap-table/locale/bootstrap-table-zh-CN.min.js?v=20200727}"></script>
+<script th:src="@{/ajax/libs/bootstrap-table/extensions/mobile/bootstrap-table-mobile.js?v=20200727}"></script>
+<!-- 遮罩层 -->
+<!--<script th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>-->
+<!--<script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>-->
+<!--<script th:src="@{/ajax/libs/layer/layer.min.js}"></script>-->
+<!--<script th:src="@{/ajax/libs/layui/layui.js}"></script>-->
+<!--<script th:src="@{/ruoyi/js/common.js?v=4.5.0}"></script>-->
+<script th:src="@{/ruoyi/js/ry-ui.js?v=4.5.0}"></script>
+<script th:inline="javascript"> var ctx = [[@{/}]]; </script>
+<script type="text/javascript">
+    var editFlag = 1;
+    var removeFlag = 1;
+    var statusDatas = 1;
+    var prefix = ctx + "/demo";
+    $(function () {
+        init();
+        initTable();
+    });
+
+    function init() {
+        $(".container").width($(window).width());
+        $(".container").height($(window).height());
+        window.onresize = function () {
+            location.reload();
+        }
+    }
+
+    function initTable() {
+        var options = {
+            id: "bootstrap-table",
+            url: prefix + '/list',
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            modalName: "报警查询",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'no',
+                    title: '序号',
+                    visible: true
+                },
+                {
+                    field: 'left1',
+                    title: '向左放煤口1'
+                },
+                {
+                    field: 'left2',
+                    title: '向左放煤口2'
+                },
+                {
+                    field: 'right1',
+                    title: '向右放煤口1'
+                },
+                {
+                    field: 'right2',
+                    title: '向右放煤口2'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.no + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.no + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }
+            ]
+        };
+        $.table.init(options);
+    }
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RecWebsocket</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
+    <meta http-equiv="Expires" content="0"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins/websocket/reconnecting-websocket.js}"></script>
+    <script type="text/javascript">
+        let addrPort = "ws://" + window.location.host + "/tcc";
+        $('document').ready(function () {
+            initReconnectWebsocket();
+        })
+
+        //████████████████████  初始化 RecWebsocket  ████████████████████████████████
+        let RecWebsocket = null, RecWebsocketName = "RecWebsocket";
+
+        function initReconnectWebsocket() {
+            RecWebsocket = new ReconnectingWebSocket(addrPort + '/ws/ReconnectingWebSocketTest');
+            RecWebsocket.onopen = function () {
+                console.log(RecWebsocketName + " 客户端已连接");
+            }
+            RecWebsocket.onmessage = function (evt) {
+                console.log(RecWebsocketName + " 客户端接收消息 ", evt.data);
+            }
+            RecWebsocket.onclose = function () {
+                console.log(RecWebsocketName + " 客户端已断开连接");
+            };
+            RecWebsocket.onerror = function (evt) {
+                console.log(RecWebsocketName + " 连接出现错误", evt.e);
+            };
+        }
+    </script>
+    <style type="text/css">
+        .container {
+            width: 1903px;
+            height: 600px;
+        }
+
+        .owl-carousel {
+            height: 100%;
+        }
+
+        .item {
+            background-color: lightcoral;
+        }
+    </style>
+<body>
+<div id="show" class="container">
+    <div id="owl_demo" class="owl-carousel" style="height: 100%">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+    </div>
+</div>
+</body>
+</html>

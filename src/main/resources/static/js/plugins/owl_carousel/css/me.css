@@ -1,0 +1,110 @@
+/*颜色*/
+.me-black{
+    color: black !important;;
+}
+.me-red{
+    color: red;
+}
+/*a标签*/
+.me-a{
+    text-decoration: none !important;
+    color: black !important;
+}
+/*盒子内外边距*/
+.me-box{
+    padding: 0;
+    margin: 0;
+}
+
+.me-box1{
+    padding: 15px;
+    margin: 15px;
+}
+
+.me-box2{
+    margin: 15px;
+    padding: 0 0 15px 15px;
+}
+
+.me-box-bottom{
+    margin-bottom: 70px;
+}
+
+.me-news-active{
+    background: white !important;
+    color: #e33131 !important;
+}
+
+.me-produce-active{
+    background: rgb(227, 49, 49) !important;
+    color: white !important;
+}
+
+.me-news span{
+    height: 60px;
+    background-color: white;
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    color: #e33131;
+    cursor: pointer;
+}
+
+.me-news-bg{
+    background: white !important;
+}
+
+/*溢出*/
+.me-overflow{
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    /*text-overflow:clip !important;*/
+}
+
+.me-li-style{
+   background: #f1f1f1 !important;
+   padding-color: red;
+}
+
+.me-hr{
+    border-top: 1px solid rgba(213, 208, 208, 0.84) !important;
+}
+
+.me-margin-left{
+    margin-left: 65px;
+}
+
+.list_detail{
+    width: 100%;
+    height: 270px;
+    vertical-align: top;
+    background-image: url(https://oss-bjlthy-website.oss-cn-beijing.aliyuncs.com/resources/img/images/list_detail.png);
+}
+
+.join_detail{
+    width: 100%;
+    height: 600px;
+    vertical-align: top;
+    background-image: url(https://oss-bjlthy-website.oss-cn-beijing.aliyuncs.com/resources/img/images/join_banner.png);
+}
+
+.me-li ul li{
+    list-style:disc;
+}
+
+.me-home-news span a{
+    position:absolute;
+    right:10%;
+    bottom:5%;
+}
+
+.me-not-click-a{
+    pointer-events: none;
+}
+
+.me-li-a-style{
+    color:white !important;
+    background: rgb(227, 49, 49) !important;
+}

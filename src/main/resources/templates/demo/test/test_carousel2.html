@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OwlCarousel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link th:href="@{/js/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/js/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css}" rel="stylesheet">
+    <link th:href="@{/js/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.green.css}" rel="stylesheet">
+    <link th:href="@{/js/plugins/OwlCarousel2-2.3.4/dist/assets/style-red.css}" rel="stylesheet">
+    <style type="text/css">
+        .container {
+            width: 1903px;
+            height: 600px;
+        }
+
+        .owl-carousel, .owl-stage-outer, .owl-stage, .owl-item {
+            height: 100%;
+        }
+
+        .owl-item {
+            background-color: lightgray;
+            padding-top: 2%;
+        }
+
+        .item {
+            background-color: lightcoral;
+        }
+    </style>
+<body>
+<div id="show" class="container">
+    <div id="owl_demo" class="owl-carousel" style="height: 100%">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/OwlCarousel2-2.3.4/dist/owl.carousel.js}"></script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        $('#owl_demo').owlCarousel({
+            items: 5,
+            smartSpeed: 2000, //切换速度
+            autoplay: true,//自动轮播
+            autoplayTimeout: 2000,
+            navText: false, //左右箭头html
+            dots: false,//显隐导行
+            nav: false, //显示左右箭头
+            loop: true,//循环轮播
+            // margin: 10, //轮播项目之间的边距
+            // navText: ['<span class="iconfont icon-xiangshang"></span>', '<span class="iconfont icon-xiangshang"></span>'],//左右箭头内容
+            autoplayHoverPause: true,//鼠标悬停停止自动播放
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OwlCarousel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link th:href="@{/js/plugins/owl_carousel/css/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/js/plugins/owl_carousel/css/animate.css}" rel="stylesheet">
+    <style type="text/css">
+        .container {
+            width: 1903px;
+            height: 600px;
+        }
+
+        .owl-carousel, .owl-wrapper-outer, .owl-wrapper, .owl-item {
+            height: 100%;
+        }
+
+        .owl-item {
+            background-color: lightgray;
+            padding-top: 2%;
+        }
+
+        .item {
+            background-color: lightcoral;
+        }
+    </style>
+<body>
+<div id="show" class="container">
+    <div id="owl_demo" class="owl-carousel" style="height: 100%">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/owl_carousel/js/owl.carousel.js}"></script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        // jQuery OwlCarousel v1.31  需要加英文冒号
+        $('#owl_demo').owlCarousel({
+            'items': 4,
+            'autoPlay': 2000,
+            'smartSpeed': 2000, //切换速度
+            // 'scrollPerPage': true,
+            'stopOnHover': true,
+            'pagination': false,
+            'paginationNumbers': true,
+            'dots': false,//显隐导行
+            'nav': false, //显示左右箭头
+            'navText': false, //左右箭头html
+            // navText: ['<span class="iconfont icon-xiangshang"></span>', '<span class="iconfont icon-xiangshang"></span>'],//左右箭头内容
+            'loop': true,//循环轮播
+            'autoplayHoverPause': true,//鼠标悬停停止自动播放
+            'margin': 10, //轮播项目之间的边距
+        });
+    })
+</script>
+</body>
+</html>

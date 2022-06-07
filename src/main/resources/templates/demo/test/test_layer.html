@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>layer</title>
+</head>
+<body>
+<div style="margin-left: 50px;">
+    <input type="button" value="layerOpen" onclick="layerOpen()"> <br>
+    <input type="button" value="showConfirm" onclick="showConfirm()"> <br>
+    <input type="button" value="showOk" onclick="showOk()"> <br>
+    <input type="button" value="showError" onclick="showError()"> <br>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script th:inline="javascript"> let ctx = [[@{/}]]; </script>
+<script type="text/javascript">
+    $(function () {
+
+    });
+
+    function showOk() {
+        layer.msg("<span style='color: #000'>成功</span>", {icon: 1, time: 2000});
+    }
+
+    function showError() {
+        layer.msg("<span style='color: #000'>失败</span>", {icon: 2, time: 2000});
+    }
+
+    function showConfirm() {
+        layer.confirm('是否执行动作？', {
+            icon: 3,
+            title: '执行动作',
+            btn: ['确定', '取消'], //按钮
+            anim: 2,
+            offset: '100px'
+        }, function () {
+            layer.msg("<span style='color: #000'>执行成功</span>", {icon: 1, time: 1500});
+            // $.ajax({
+            //     url: "/tcc/manage/strategySet/drawOrderDelete", type: "post",
+            //     dataType: "json", data: {id: $(".id").text()},
+            //     success: function (obj) {
+            //         console.log("drawOrderDelete", obj);
+            //         if (obj.code == 0) {
+            //             parent.layer.msg("<span style='color: #000'>删除成功</span>", {icon: 1, time: 1500});
+            //         } else {
+            //             parent.layer.msg("<span style='color: #000'>删除失败</span>", {icon: 2, time: 1500});
+            //         }
+            //         parent.layer.close(index); //再执行关闭
+            //     }
+            // })
+
+        });
+    }
+
+    function layerOpen() {
+        let width = 800;
+        let height = ($(window).height() - 20);
+        layer.open({
+            content: ctx + "/demo/openWindow",
+            type: 2,
+            area: [width + 'px', height + 'px'],
+            fix: false,
+            maxmin: true,
+            shade: 0.3,
+            title: "layerOpen",
+            btn: ['确定', '清空', '删除', '关闭'],
+            shadeClose: true,// 弹层外区域关闭
+            yes: function (index, layero) {
+                // let iframeWin = layero.find('iframe')[0];
+                // iframeWin.contentWindow.drawOrderSubmit(index, layero);
+                // return false;
+            }, btn2: function (index, layero) {
+                // let iframeWin = layero.find('iframe')[0];
+                // iframeWin.contentWindow.drawOrderClean(index, layero);
+                // return false;
+            }, btn3: function (index, layero) {
+                // let iframeWin = layero.find('iframe')[0];
+                // iframeWin.contentWindow.drawOrderDelete(index, layero);
+                // return false;
+            },
+            cancel: function (index) {
+                return true;
+            }
+        });
+    }
+</script>
+</html>
